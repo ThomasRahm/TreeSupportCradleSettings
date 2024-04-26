@@ -1,0 +1,14 @@
+{
+  "author": {
+    "author_id": "thomasrahm",
+    "display_name": "ThomasRahm"
+  },
+  "description": "Simulate a plugin to add settings",
+  "display_name": "CuraEngineCradleSettings",
+  "package_id": "CuraEngineCradleSettings",
+  "package_type": "plugin",
+  "package_version": "0.1.0",
+  "sdk_version": 8,
+  "sdk_version_semver": "8.5.0",
+  "website": "https://github.com/conan-io/conan-center-index"
+}

@@ -1,0 +1,379 @@
+{                
+    "support": {
+        "children": {
+            "support_tree_enforce_initial_layer_diameter":
+            {
+                "label": "Enforce Initial Layer Diameter",
+                "description": "Increase tip diameter for support close to the buildplate to enable said branch to reach initial layer diameter. Improves support close to the buildplate.",
+                "type": "bool",
+                "default_value": false,
+                "enabled": "support_enable and support_structure=='tree'",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_height":
+            {
+                "label": "Cradle Height",
+                "description": "The height of the cradle to support pointy overhangs. The cradle will stop generating if the pointy part of the model connects with another part of the model that either rests on the buildplate or already has its own cradle. Set to 0 to disable. A larger cradle height reduces failures of pointy overhangs but increases material usage and print time and alco can make the support harder to remove.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 5,
+                "enabled": "support_enable and support_structure=='tree'",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_min_height":
+            {
+                "label": "Minimum Cradle Height",
+                "description": "The minimum height of the cradle to support pointy overhangs. Cradles that would be smaller than this will not generate",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "maximum_value": "support_tree_cradle_height",
+                "value": "support_tree_cradle_height/2",
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_line_count":
+            {
+                "label": "Cradle Lines",
+                "description": "The Cradle consists of lines leading away from the model. This is the amount of lines that should be generated around the model. Highter amount of lines reduces failures of pointy overhangs but increases material usage and print time and alco can make the support harder to remove.",
+                "type": "int",
+                "minimum_value": "1",
+                "minimum_value_warning": "3",
+                "default_value": 6,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_length":
+            {
+                "label": "Cradle Length",
+                "description": "Length of the lines of the cradle. Inreasing this increases material usage and print time, but makes the cradle more sturdy.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value_warning": "support_line_width",
+                "default_value": 4,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_min_cradle_length":
+            {
+                "label": "Minimum Cradle Length",
+                "description": "Sometimes cradle lines are shorter than desired e.g. when they would collide with another cradle line. Cradle lines smaller than this are removed",
+                "unit": "mm",
+                "type": "float",                
+                "minimum_value_warning": "support_line_width",
+                "maximum_value_warning": "support_tree_cradle_length * 0.75",
+                "maximum_value": "support_tree_cradle_length",
+                "default_value": 2,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_line_width":
+            {
+                "label": "Cradle Line Width",
+                "description": "Width of the lines of the cradle. Inreasing this increases material usage and print time, but makes the cradle more sturdy. If increases so much that the lines touch and become one area it will make the support very hard to remove.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value_warning": "support_line_width",
+                "value": "support_line_width",
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_maximum_pointy_area":
+            {
+                "label": "Cradle Threshold",
+                "description": "Area required for a pointy overhang to cause a cradle to be generated.",
+                "unit": "mm\u00b2",
+                "type": "float",
+                "default_value": 25,
+                "minimum_value": "0",
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_base_tip_percentage":
+            {
+                "label": "Cradle Tip Size",
+                "description": "Percentage of size of the tips supporting the pointy overhang. 0% means the tip with have the size of regular tips. 100% means they will have a diameter of branch diameter.",
+                "unit": "%",
+                "type": "float",
+                "minimum_value": "0",
+                "maximum_value": "100",
+                "default_value": 50,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_height_0":
+            {
+                "label": "Cradle XY Height 1",
+                "description": "The height of the 1. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.4,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_0":
+            {
+                "label": "Cradle XY Distance 1",
+                "description": "Distance between cradle lines and model on the 1. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.4,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_height_1":
+            {
+                "label": "Cradle XY Height 2",
+                "description": "The height of the 2. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.1,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_1":
+            {
+                "label": "Cradle XY Distance 2",
+                "description": "Distance between cradle lines and model on the 2. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.15,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0",
+                "settable_per_mesh": true
+            }, 
+            "support_tree_cradle_xy_height_2":
+            {
+                "label": "Cradle XY Height 3",
+                "description": "The height of the 3. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 1.0,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_2":
+            {
+                "label": "Cradle XY Distance 3",
+                "description": "Distance between cradle lines and model on the 2. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.3,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_height_3":
+            {
+                "label": "Cradle XY Height 4",
+                "description": "The height of the 3. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "maximum_value": "support_tree_cradle_height",
+                "default_value": 0.1,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_3":
+            {
+                "label": "Cradle XY Distance 4",
+                "description": "Distance between cradle lines and model on the 4. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.15,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_height_4":
+            {
+                "label": "Cradle XY Height 5",
+                "description": "The height of the 5. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "maximum_value": "support_tree_cradle_height",
+                "default_value": 1.0,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_4":
+            {
+                "label": "Cradle XY Distance 5",
+                "description": "Distance between cradle lines and model on the 5. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.3,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_height_5":
+            {
+                "label": "Cradle XY Height 6",
+                "description": "The height of the 6. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "maximum_value": "support_tree_cradle_height",
+                "default_value": 0.1,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_5":
+            {
+                "label": "Cradle XY Distance 6",
+                "description": "Distance between cradle lines and model on the 6. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.1,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_height_6":
+            {
+                "label": "Cradle XY Height 7",
+                "description": "The height of the 7. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "maximum_value": "support_tree_cradle_height",
+                "default_value": 0,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_6":
+            {
+                "label": "Cradle XY Distance 7",
+                "description": "Distance between cradle lines and model on the 7. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.2,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_height_7":
+            {
+                "label": "Cradle XY Height 8",
+                "description": "The height of the 8. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "maximum_value": "support_tree_cradle_height",
+                "default_value": 0,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_7":
+            {
+                "label": "Cradle XY Distance 8",
+                "description": "Distance between cradle lines and model on the 8. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.2,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_height_8":
+            {
+                "label": "Cradle XY Height 9",
+                "description": "The height of the 9. part of the cradle. The custom cradle xy distance will be applied from the previous part of the cradle for this amount of height.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "maximum_value": "support_tree_cradle_height",
+                "default_value": 0,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_xy_dist_9":
+            {
+                "label": "Cradle XY Distance 9",
+                "description": "Distance between cradle lines and model on the 9. part of the cradle",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.2,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0 and support_tree_cradle_xy_height_8 > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_z_distance":
+            {
+                "label": "Cradle Z Distance",
+                "description": "The Z Distance between the cradle-lines and the support it is supported by. Increasing makes cradle lines easier to remove",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "0",
+                "default_value": 0.2,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_large_cradle_line_tips":
+            {
+                "label": "Large Cradle Line Tips",
+                "description": "Generate large tips below the cradle lines.",
+                "type": "bool",
+                "default_value": true,
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            },
+            "support_tree_support_skin_height":
+            {
+                "label": "Support Skin Height",
+                "description": "Height of Support Skin generated to support cradle/interface/model parts that would fall inside of a support area. Increasing this increases material usage and print time. Skin height will be rounded up towards the next multiple of layer-height. Using a support top distance that is not a multiple of layer-height will increase the skin height by less than one layer height.",
+                "unit": "mm",
+                "type": "float",
+                "value": "layer_height * 2",
+                "maximum_value_warning": "layer_height * 5",
+                "enabled": "support_enable and support_structure=='tree'",
+                "settable_per_mesh": true
+            },
+            "support_tree_support_skin_line_distance":
+            {
+                "label": "Support Skin Line Distance",
+                "description": "Distance between lines of the support skin.",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": "support_line_width",
+                "value": "support_line_width * 1.5",
+                "enabled": "support_enable and support_structure=='tree' and support_tree_support_skin_height >= layer_height",
+                "settable_per_mesh": true
+            },
+            "support_tree_skin_for_large_tips_threshold":
+            {
+                "label": "Support Skin for Tips Threshold",
+                "description": "Generate support skin for any tips that have at least this diameter.",
+                "unit": "mm",
+                "type": "float",
+                "value": "support_line_width * support_wall_count * 4.0",
+                "enabled": "support_enable and support_structure=='tree' and support_tree_support_skin_height >= layer_height",
+                "settable_per_mesh": true
+            },
+            "support_tree_roof_cradle":
+            {
+                "label": "Cradle Roof Type",
+                "description": "How the cradle should behave if roof is active. None means the cradle will generate using regular support. Cradle means only the cradle lines will be roof. Cradle and base means thet the Cradle Lines as well as the area below them and the pointy overhang will be roof. Will ignore Minimum Roof Area.",
+                "type": "enum",
+                "options":
+                {
+                    "none": "Regular Support",
+                    "cradle_only": "Cradle",
+                    "cradle_and_base": "Cradle and Base",
+                    "large_cradle_and_base": "Large Cradle and Base"
+                },
+                "default_value": "large_cradle_and_base",
+                "enabled": "support_enable and support_structure=='tree' and support_roof_enable and support_tree_cradle_height > 0",
+                "settable_per_mesh": true
+            }
+        }
+    }
+}

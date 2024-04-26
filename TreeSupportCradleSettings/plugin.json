@@ -1,0 +1,9 @@
+{
+  "name": "CuraEngineCradleSettings",
+  "author": "ThomasRahm",
+  "version": "0.1.0",
+  "description": "Simulate a plugin to load new CuraEngine Settings for Cradles",
+  "api": "8",
+  "supported_sdk_versions": [ "8.5.0"],
+  "i18n-catalog": "cura"
+}
