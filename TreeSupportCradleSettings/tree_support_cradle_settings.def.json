@@ -90,15 +90,15 @@
                 "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
                 "settable_per_mesh": true
             },
-            "support_tree_cradle_base_tip_percentage":
+            "support_tree_cradle_base_diameter":
             {
-                "label": "Cradle Tip Size",
-                "description": "Percentage of size of the tips supporting the pointy overhang. 0% means the tip with have the size of regular tips. 100% means they will have a diameter of branch diameter.",
-                "unit": "%",
+                "label": "Cradle Base Support Area Diameter",
+                "description": "Size of the base below the cradle.",
+                "unit": "mm",
                 "type": "float",
-                "minimum_value": "0",
-                "maximum_value": "100",
-                "default_value": 50,
+                "minimum_value": "support_tree_tip_diameter",
+                "maximum_value": "support_tree_branch_diameter",
+                "default_value": 3,
                 "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
                 "settable_per_mesh": true
             },
