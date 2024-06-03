@@ -295,7 +295,7 @@
                 "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0",
                 "settable_per_mesh": true
             },
-            "support_tree_cradle_xy_dist_9":
+            "support_tree_cradle_xy_dist_8":
             {
                 "label": "Cradle XY Distance 9",
                 "description": "Distance between cradle lines and model on the 9. part of the cradle",
