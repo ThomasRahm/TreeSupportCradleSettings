@@ -10,15 +10,33 @@
                 "enabled": "support_enable and support_structure=='tree'",
                 "settable_per_mesh": true
             },
+            "support_tree_cradle_enable":
+            {
+                "label": "Enable Cradle",
+                "description": "Enable placing cradles around parts to prevent parts from falling over while printing.",
+                "type": "bool",
+                "default_value": true,
+                "enabled": "support_enable",
+                "settable_per_mesh": true
+            },
+            "support_tree_cradle_generation":
+            {
+                "label": "Automatic Cradle Generateion",
+                "description": "Automatic placment of cradles around pointy overhangs. If disabled only manually placed cradles will generate.",
+                "type": "bool",
+                "default_value": true,
+                "enabled": "support_enable and support_tree_cradle_enable",
+                "settable_per_mesh": true
+            },
             "support_tree_cradle_height":
             {
                 "label": "Cradle Height",
-                "description": "The height of the cradle to support pointy overhangs. The cradle will stop generating if the pointy part of the model connects with another part of the model that either rests on the buildplate or already has its own cradle. Set to 0 to disable. A larger cradle height reduces failures of pointy overhangs but increases material usage and print time and alco can make the support harder to remove.",
+                "description": "The height of the cradle to support pointy overhangs. The cradle will stop generating if the pointy part of the model connects with another part of the model that either rests on the buildplate or already has its own cradle. A larger cradle height reduces failures of pointy overhangs but increases material usage and print time and alco can make the support harder to remove.",
                 "unit": "mm",
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 5,
-                "enabled": "support_enable and support_structure=='tree'",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_min_height":
@@ -30,7 +48,7 @@
                 "minimum_value": "0",
                 "maximum_value": "support_tree_cradle_height",
                 "value": "support_tree_cradle_height/2",
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_line_count":
@@ -41,7 +59,7 @@
                 "minimum_value": "1",
                 "minimum_value_warning": "3",
                 "default_value": 6,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_length":
@@ -52,7 +70,7 @@
                 "type": "float",
                 "minimum_value_warning": "support_line_width",
                 "default_value": 4,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_min_cradle_length":
@@ -65,7 +83,7 @@
                 "maximum_value_warning": "support_tree_cradle_length * 0.75",
                 "maximum_value": "support_tree_cradle_length",
                 "default_value": 2,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_line_width":
@@ -76,7 +94,7 @@
                 "type": "float",
                 "minimum_value_warning": "support_line_width",
                 "value": "support_line_width",
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_maximum_pointy_area":
@@ -87,7 +105,7 @@
                 "type": "float",
                 "default_value": 25,
                 "minimum_value": "0",
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_generation",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_base_diameter":
@@ -99,7 +117,7 @@
                 "minimum_value": "support_tree_tip_diameter",
                 "maximum_value": "support_tree_branch_diameter",
                 "default_value": 3,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_height_0":
@@ -110,7 +128,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.4,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_0":
@@ -121,7 +139,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.4,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_height_1":
@@ -132,7 +150,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.1,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enableand support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_1":
@@ -143,7 +161,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.15,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0",
                 "settable_per_mesh": true
             }, 
             "support_tree_cradle_xy_height_2":
@@ -154,7 +172,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 1.0,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_2":
@@ -165,7 +183,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.3,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_height_3":
@@ -177,7 +195,7 @@
                 "minimum_value": "0",
                 "maximum_value": "support_tree_cradle_height",
                 "default_value": 0.1,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_3":
@@ -188,7 +206,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.15,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_height_4":
@@ -200,7 +218,7 @@
                 "minimum_value": "0",
                 "maximum_value": "support_tree_cradle_height",
                 "default_value": 1.0,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_4":
@@ -211,7 +229,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.3,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_height_5":
@@ -223,7 +241,7 @@
                 "minimum_value": "0",
                 "maximum_value": "support_tree_cradle_height",
                 "default_value": 0.1,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_5":
@@ -234,7 +252,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.1,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_height_6":
@@ -246,7 +264,7 @@
                 "minimum_value": "0",
                 "maximum_value": "support_tree_cradle_height",
                 "default_value": 0,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_6":
@@ -257,7 +275,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.2,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_height_7":
@@ -269,7 +287,7 @@
                 "minimum_value": "0",
                 "maximum_value": "support_tree_cradle_height",
                 "default_value": 0,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_7":
@@ -280,7 +298,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.2,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_height_8":
@@ -292,7 +310,7 @@
                 "minimum_value": "0",
                 "maximum_value": "support_tree_cradle_height",
                 "default_value": 0,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_xy_dist_8":
@@ -303,7 +321,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "default_value": 0.2,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0 and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0 and support_tree_cradle_xy_height_8 > 0",
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_cradle_xy_height_1 > 0 and support_tree_cradle_xy_height_2 > 0 and support_tree_cradle_xy_height_3 > 0 and support_tree_cradle_xy_height_4 > 0 and support_tree_cradle_xy_height_5 > 0 and support_tree_cradle_xy_height_6 > 0 and support_tree_cradle_xy_height_7 > 0 and support_tree_cradle_xy_height_8 > 0",
                 "settable_per_mesh": true
             },
             "support_tree_cradle_z_distance":
@@ -314,7 +332,7 @@
                 "type": "float",
                 "minimum_value": "0",
                 "value": "layer_height",
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_large_cradle_line_tips":
@@ -323,7 +341,7 @@
                 "description": "Generate large tips below the cradle lines.",
                 "type": "bool",
                 "default_value": true,
-                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_structure=='tree' and support_tree_cradle_enable",
                 "settable_per_mesh": true
             },
             "support_tree_support_skin_height":
@@ -371,7 +389,58 @@
                     "large_cradle_and_base": "Large Cradle and Base"
                 },
                 "default_value": "large_cradle_and_base",
-                "enabled": "support_enable and support_structure=='tree' and support_roof_enable and support_tree_cradle_height > 0",
+                "enabled": "support_enable and support_roof_enable and support_tree_cradle_enable",
+                "settable_per_mesh": true
+            },
+            "support_tree_side_cradle_enabled":
+            {
+                "label": "Automatic side-cradle generation",
+                "description": "Place cradles around parts that could deform while printing.",
+                "type": "bool",
+                "default_value": true,
+                "enabled": "support_enable and support_tree_cradle_enable",
+                "settable_per_mesh": true
+            },
+            "support_tree_part_deformation_diameter":
+            {
+                "label": "Stable Part Diameter",
+                "description": "Parts that have at leave this radius are assumed to not deform while printing",
+                "unit": "mm",
+                "type": "float",
+                "minimum_value": 0.1,
+                "default_value": 20,
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_side_cradle_enabled",
+                "settable_per_mesh": true
+            },
+            "support_tree_part_deformation_constant":
+            {
+                "label": "Deformation Constant",
+                "description": "How easy parts deform, increasing this will cause more side cradles.",
+                "type": "float",
+                "minimum_value": 0,
+                "default_value": 1500,
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_side_cradle_enabled",
+                "settable_per_mesh": true
+            },
+            "support_tree_part_side_cradle_support_threshold":
+            {
+                "label": "Side Cradle Threashold",
+                "description": "After how much deformation side cradles will generate, reducing this will cause more side cradles.",
+                "type": "float",
+                "unit": "mm",
+                "minimum_value": 0,
+                "default_value": 0.4,
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_side_cradle_enabled",
+                "settable_per_mesh": true
+            },
+            "support_tree_side_cradle_xy_factor":
+            {
+                "label": "Deformation Horizontal Factor",
+                "description": "Weighting for horizontal changes in position. Increasing this will cause more side cradles, based on xy position changes",
+                "type": "float",
+                "minimum_value": 0,
+                "default_value": 2.0,
+                "enabled": "support_enable and support_tree_cradle_enable and support_tree_side_cradle_enabled",
                 "settable_per_mesh": true
             }
         }
