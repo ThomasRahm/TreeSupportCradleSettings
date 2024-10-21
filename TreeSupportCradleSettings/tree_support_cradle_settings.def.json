@@ -404,7 +404,7 @@
             "support_tree_part_deformation_diameter":
             {
                 "label": "Stable Part Diameter",
-                "description": "Parts that have at leave this radius are assumed to not deform while printing",
+                "description": "Parts that have at least this diameter are assumed to not deform while printing",
                 "unit": "mm",
                 "type": "float",
                 "minimum_value": 0.1,
@@ -418,7 +418,7 @@
                 "description": "How easy parts deform, increasing this will cause more side cradles.",
                 "type": "float",
                 "minimum_value": 0,
-                "default_value": 1500,
+                "default_value": 4000.0,
                 "enabled": "support_enable and support_tree_cradle_enable and support_tree_side_cradle_enabled",
                 "settable_per_mesh": true
             },
