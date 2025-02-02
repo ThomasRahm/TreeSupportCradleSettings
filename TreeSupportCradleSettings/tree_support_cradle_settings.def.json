@@ -418,7 +418,7 @@
                 "description": "How easy parts deform, increasing this will cause more side cradles.",
                 "type": "float",
                 "minimum_value": 0,
-                "default_value": 4000.0,
+                "default_value": 3000.0,
                 "enabled": "support_enable and support_tree_cradle_enable and support_tree_side_cradle_enabled",
                 "settable_per_mesh": true
             },
@@ -439,7 +439,7 @@
                 "description": "Weighting for horizontal changes in position. Increasing this will cause more side cradles, based on xy position changes",
                 "type": "float",
                 "minimum_value": 0,
-                "default_value": 2.0,
+                "default_value": 1.25,
                 "enabled": "support_enable and support_tree_cradle_enable and support_tree_side_cradle_enabled",
                 "settable_per_mesh": true
             }
